@@ -2,6 +2,7 @@
 # Installs and configures HAProxy to load balance between web-01 and web-02
 apt-get update -y
 apt-get install -y haproxy
+echo "ENABLED=1" >> /etc/default/haproxy
 printf %s "global
 	log /dev/log local0
 	log /dev/log local1 notice
