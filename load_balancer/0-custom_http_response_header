@@ -3,14 +3,13 @@
 apt-get update -y
 apt-get install -y nginx
 echo "Holberton School for the win!" > /var/www/html/index.html
-HOSTNAME=$(hostname)
 printf %s "server {
 	listen 80 default_server;
 	listen [::]:80 default_server;
 	root /var/www/html;
 	index index.html index.htm index.nginx-debian.html;
 	server_name _;
-	add_header X-Served-By ${HOSTNAME};
+	add_header X-Served-By \$hostname;
 	location /redirect_me {
 		return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
 	}
