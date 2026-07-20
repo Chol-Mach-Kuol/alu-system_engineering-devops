@@ -4,6 +4,7 @@
 apt-get update -y
 apt-get install -y nginx
 
+# shellcheck disable=SC2016
 sed -i '/listen 80 default_server;/a\\tadd_header X-Served-By $hostname;' /etc/nginx/sites-available/default
 
 service nginx start
