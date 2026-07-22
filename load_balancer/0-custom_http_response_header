@@ -2,6 +2,7 @@
 # Configures Nginx to add a custom X-Served-By header with the server hostname
 apt-get update -y
 apt-get install -y nginx
+mkdir -p /var/www/html
 echo "Holberton School for the win!" > /var/www/html/index.html
 printf %s "server {
 	listen 80 default_server;
@@ -18,4 +19,5 @@ printf %s "server {
 		try_files \$uri \$uri/ =404;
 	}
 }" > /etc/nginx/sites-available/default
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 service nginx restart
