@@ -13,7 +13,7 @@ echo "Holberton School for the win!" > /var/www/html/index.nginx-debian.html
 # Ensure Nginx is configured to serve the correct page
 # The default configuration already serves from /var/www/html
 
-# Restart Nginx without using systemctl
-service nginx restart
+# Start Nginx without using systemctl
+service nginx start
 
 # The default configuration already listens on port 80
