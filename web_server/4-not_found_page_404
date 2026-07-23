@@ -2,23 +2,23 @@
 # Configures Nginx with a custom 404 page containing "Ceci n'est pas une page"
 apt-get update -y
 apt-get install -y nginx
-mkdir -p /var/www/html
-echo "Holberton School for the win!" > /var/www/html/index.html
+echo "Holberton School for the win!" > /var/www/html/index.nginx-debian.html
 echo "Ceci n'est pas une page" > /var/www/html/404.html
+rm -f /etc/nginx/sites-enabled/default
 cat > /etc/nginx/sites-available/default << 'EOF'
 server {
-        listen 80 default_server;
-        listen [::]:80 default_server;
-        root /var/www/html;
-        index index.html index.htm index.nginx-debian.html;
-        server_name _;
-        location /redirect_me {
-                return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-        }
-        error_page 404 /404.html;
-        location / {
-                try_files $uri $uri/ =404;
-        }
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    root /var/www/html;
+    index index.html index.htm index.nginx-debian.html;
+    server_name _;
+    error_page 404 /404.html;
+    location /redirect_me {
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+    }
+    location / {
+        try_files $uri $uri/ =404;
+    }
 }
 EOF
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
