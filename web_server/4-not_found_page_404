@@ -2,6 +2,7 @@
 # Configures Nginx with a custom 404 page containing "Ceci n'est pas une page"
 apt-get update -y
 apt-get install -y nginx
+mkdir -p /var/www/html
 echo "Holberton School for the win!" > /var/www/html/index.html
 echo "Ceci n'est pas une page" > /var/www/html/404.html
 printf %s "server {
@@ -18,4 +19,6 @@ printf %s "server {
 		try_files \$uri \$uri/ =404;
 	}
 }" > /etc/nginx/sites-available/default
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+service nginx start
 service nginx restart
