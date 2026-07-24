@@ -3,6 +3,6 @@
 export DEBIAN_FRONTEND=noninteractive
 apt-get update -y
 apt-get install -y nginx
-printf "Holberton School for the win!" > /var/www/html/index.html
+echo "Holberton School for the win!" > /var/www/html/index.html
 service nginx stop 2>/dev/null || true
 service nginx start
